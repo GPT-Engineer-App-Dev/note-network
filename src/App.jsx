@@ -8,7 +8,7 @@ import Browse from "./pages/Browse.jsx";
 import Library from "./pages/Library.jsx";
 import Search from "./pages/Search.jsx";
 import Profile from "./pages/Profile.jsx";
-import { Home, LibraryIcon, SearchIcon, ProfileIcon, ListMusic } from "lucide-react";
+import { Home, LibraryIcon, SearchIcon, User, ListMusic } from "lucide-react";
 
 const queryClient = new QueryClient();
 
@@ -36,7 +36,7 @@ export const navItems = [
   {
     title: "Profile",
     to: "/profile",
-    icon: <ProfileIcon className="h-4 w-4" />,
+    icon: <User className="h-4 w-4" />,
   },
 ];
 
