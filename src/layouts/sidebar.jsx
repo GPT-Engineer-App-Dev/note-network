@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
-import { CircleUser, Menu, Package2 } from "lucide-react";
+import { CircleUser, Menu, Package2, Home, BrowseIcon, LibraryIcon, SearchIcon, ProfileIcon, SkipBack, Play, SkipForward } from "lucide-react";
 import { NavLink, Outlet } from "react-router-dom";
 import { navItems } from "../App";
 
@@ -20,12 +20,15 @@ const Layout = () => {
       <div className="flex flex-col">
         <header className="flex h-14 items-center gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6">
           <MobileSidebar />
-          <div className="w-full flex-1">{/* Add nav bar content here! */}</div>
+          <div className="w-full flex-1">
+            <SearchBar />
+          </div>
           <UserDropdown />
         </header>
         <main className="flex-grow p-4 overflow-auto">
           <Outlet />
         </main>
+        <FooterPlayer />
       </div>
     </div>
   );
@@ -37,7 +40,7 @@ const Sidebar = () => (
       <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
         <NavLink to="/" className="flex items-center gap-2 font-semibold">
           <Package2 className="h-6 w-6" />
-          <span>Acme Inc</span>
+          <span>Music Stream</span>
         </NavLink>
       </div>
       <div className="flex-1">
@@ -49,6 +52,14 @@ const Sidebar = () => (
             </SidebarNavLink>
           ))}
         </nav>
+        <div className="mt-4 px-2 lg:px-4">
+          <h3 className="text-xs font-semibold text-muted-foreground">Playlists</h3>
+          <nav className="mt-2 grid gap-2">
+            <SidebarNavLink to="/playlist/1">My Playlist 1</SidebarNavLink>
+            <SidebarNavLink to="/playlist/2">My Playlist 2</SidebarNavLink>
+            <SidebarNavLink to="/playlist/3">My Playlist 3</SidebarNavLink>
+          </nav>
+        </div>
       </div>
     </div>
   </div>
@@ -69,7 +80,7 @@ const MobileSidebar = () => (
           className="flex items-center gap-2 text-lg font-semibold mb-4"
         >
           <Package2 className="h-6 w-6" />
-          <span className="sr-only">Acme Inc</span>
+          <span className="sr-only">Music Stream</span>
         </NavLink>
         {navItems.map((item) => (
           <SidebarNavLink key={item.to} to={item.to}>
@@ -112,6 +123,49 @@ const SidebarNavLink = ({ to, children }) => (
   >
     {children}
   </NavLink>
+);
+
+const SearchBar = () => (
+  <div className="relative w-full max-w-md">
+    <input
+      type="text"
+      placeholder="Search..."
+      className="w-full rounded-full border border-muted bg-background px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+    />
+    <button className="absolute right-2 top-1/2 transform -translate-y-1/2 text-muted-foreground">
+      <SearchIcon className="h-5 w-5" />
+    </button>
+  </div>
+);
+
+const FooterPlayer = () => (
+  <footer className="sticky bottom-0 flex items-center justify-between border-t bg-muted/40 px-4 py-2">
+    <div className="flex items-center gap-4">
+      <img src="/placeholder.svg" alt="placeholder" className="mx-auto object-cover w-12 h-12" />
+      <div>
+        <h4 className="text-sm font-semibold">Song Title</h4>
+        <p className="text-xs text-muted-foreground">Artist Name</p>
+      </div>
+    </div>
+    <div className="flex items-center gap-4">
+      <button className="text-muted-foreground">
+        <SkipBack className="h-5 w-5" />
+      </button>
+      <button className="text-muted-foreground">
+        <Play className="h-5 w-5" />
+      </button>
+      <button className="text-muted-foreground">
+        <SkipForward className="h-5 w-5" />
+      </button>
+    </div>
+    <div className="flex items-center gap-2">
+      <span className="text-xs text-muted-foreground">0:00</span>
+      <div className="relative w-32 h-1 bg-muted">
+        <div className="absolute top-0 left-0 h-full bg-primary" style={{ width: "50%" }}></div>
+      </div>
+      <span className="text-xs text-muted-foreground">3:45</span>
+    </div>
+  </footer>
 );
 
 export default Layout;
