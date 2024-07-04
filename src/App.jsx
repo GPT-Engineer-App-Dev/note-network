@@ -8,6 +8,7 @@ import Browse from "./pages/Browse.jsx";
 import Library from "./pages/Library.jsx";
 import Search from "./pages/Search.jsx";
 import Profile from "./pages/Profile.jsx";
+import { Home, BrowseIcon, LibraryIcon, SearchIcon, ProfileIcon } from "lucide-react";
 
 const queryClient = new QueryClient();
 
