@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
-import { CircleUser, Menu, Package2, Home, BrowseIcon, LibraryIcon, SearchIcon, ProfileIcon, PreviousIcon, PlayIcon, NextIcon } from "lucide-react";
+import { CircleUser, Menu, Package2, Home, BrowseIcon, LibraryIcon, SearchIcon, ProfileIcon, SkipBack, Play, SkipForward } from "lucide-react";
 import { NavLink, Outlet } from "react-router-dom";
 import { navItems } from "../App";
 
@@ -149,13 +149,13 @@ const FooterPlayer = () => (
     </div>
     <div className="flex items-center gap-4">
       <button className="text-muted-foreground">
-        <PreviousIcon className="h-5 w-5" />
+        <SkipBack className="h-5 w-5" />
       </button>
       <button className="text-muted-foreground">
-        <PlayIcon className="h-5 w-5" />
+        <Play className="h-5 w-5" />
       </button>
       <button className="text-muted-foreground">
-        <NextIcon className="h-5 w-5" />
+        <SkipForward className="h-5 w-5" />
       </button>
     </div>
     <div className="flex items-center gap-2">
